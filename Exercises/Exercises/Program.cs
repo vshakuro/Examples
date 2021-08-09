@@ -21,5 +21,18 @@ namespace Exercises
             double lenghtInches = (lenghtMeters * 1000 + lenghtMillimeters) / MilimetersInOneInch;
             Console.WriteLine($"Значение в дюймах = {lenghtInches}");
         }
+
+        static void Exercise2()
+        {
+            Console.WriteLine("Задача 2:\nЗадана длительность интервала времени в годах, месяцах и днях. Найти его величину в днях.");
+            Console.WriteLine("Введите значение в годах");
+            int yearsInput = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите значение в месяцах");
+            int monthesInput = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите значение в днях");
+            int daysInput = Convert.ToInt32(Console.ReadLine());
+            int valueInDays = yearsInput * 365 + monthesInput * 30 + daysInput;
+            Console.WriteLine($"Величина в днях {valueInDays}");
+        }
     }
 }
