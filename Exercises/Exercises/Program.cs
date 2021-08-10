@@ -8,7 +8,7 @@ namespace Exercises
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Exercise1();
+            Exercise2();
         }
         static void Exercise1()
         {
@@ -20,6 +20,19 @@ namespace Exercises
             double lenghtMillimeters = Convert.ToDouble(Console.ReadLine());
             double lenghtInches = (lenghtMeters * 1000 + lenghtMillimeters) / MilimetersInOneInch;
             Console.WriteLine($"Значение в дюймах = {lenghtInches}");
+        }
+
+        static void Exercise2()
+        {
+            Console.WriteLine("Задача 2:\nЗадана длительность интервала времени в годах, месяцах и днях. Найти его величину в днях.");
+            Console.WriteLine("Введите значение в годах");
+            long yearsInput = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите значение в месяцах");
+            long monthesInput = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите значение в днях");
+            long daysInput = Convert.ToInt32(Console.ReadLine());
+            long valueInDays = yearsInput * 365 + monthesInput * 30 + daysInput;
+            Console.WriteLine($"Величина в днях {valueInDays}");
         }
     }
 }
