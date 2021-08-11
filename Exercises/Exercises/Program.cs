@@ -8,12 +8,60 @@ namespace Exercises
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Exercise2();
+            bool exitProgram = false;
+            int taskNumber;
+            //while (!exitProgram)
+            while (exitProgram == false)
+            {
+                do
+                {
+                    Console.WriteLine("Выберите задачу, которую хотите решить:\n1-Задача 1 (Длина отрезка)\n2-Задача 2 (Сумма дней)\n");
+                    taskNumber = Convert.ToInt32(Console.ReadLine());
+                    switch (taskNumber)
+                    {
+                        case 1:
+                            Exercise1();
+                            break;
+                        case 2:
+                            Exercise2();
+                            break;
+                        default:
+                            {
+                                Console.WriteLine("\nНеправильное число\n");
+                                break;
+                            }
+                    }
+                }
+                while (taskNumber != 1 && taskNumber != 2);
+                Console.WriteLine("\nВыйти?\n1-Да, 2-Нет, продолжить");
+                int userChoice = Convert.ToInt32(Console.ReadLine());
+                if (userChoice == 1)
+                {
+                    exitProgram = true;
+                    //exitProgram = (userChoice == 1);
+                }
+                else
+                {
+                    while (userChoice != 1 && userChoice != 2)
+                    {
+                        Console.WriteLine("\nВведите 1(Выйти) или 2(Продолжить)");
+                        userChoice = Convert.ToInt32(Console.ReadLine());
+                    }
+                    if (userChoice == 1)
+                    {
+                        exitProgram = true;
+                    }
+                    else
+                    {
+                        exitProgram = false;
+                    }
+                }
+            }
         }
         static void Exercise1()
         {
             const double MilimetersInOneInch = 25.4;
-            Console.WriteLine("Задача 1:\nЗадано значение длины отрезка в метрах и миллиметрах. Найти ее величину в дюймах.\n");
+            Console.WriteLine("\nЗадача 1:\nЗадано значение длины отрезка в метрах и миллиметрах. Найти ее величину в дюймах.\n");
             Console.WriteLine("Введите значение длины отрезка в метрах:");
             double lenghtMeters = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите значение длины отрезка в миллиметрах:");
@@ -26,11 +74,11 @@ namespace Exercises
         {
             Console.WriteLine("Задача 2:\nЗадана длительность интервала времени в годах, месяцах и днях. Найти его величину в днях.");
             Console.WriteLine("Введите значение в годах");
-            long yearsInput = Convert.ToInt32(Console.ReadLine());
+            long yearsInput = Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Введите значение в месяцах");
-            long monthesInput = Convert.ToInt32(Console.ReadLine());
+            long monthesInput = Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Введите значение в днях");
-            long daysInput = Convert.ToInt32(Console.ReadLine());
+            long daysInput = Convert.ToInt64(Console.ReadLine());
             long valueInDays = yearsInput * 365 + monthesInput * 30 + daysInput;
             Console.WriteLine($"Величина в днях {valueInDays}");
         }
