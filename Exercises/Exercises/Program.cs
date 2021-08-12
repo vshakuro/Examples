@@ -8,7 +8,7 @@ namespace Exercises
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            menuCall();
+            MenuCall();
         }
         static void Exercise1()
         {
@@ -35,7 +35,7 @@ namespace Exercises
             Console.WriteLine($"Величина в днях {valueInDays}");
         }
 
-        static void Switcher(int taskNumber)
+        static void SelectTask(int taskNumber)
         {
             switch (taskNumber)
             {
@@ -53,47 +53,37 @@ namespace Exercises
             }
         }
 
-        static void menuCall()
+        static void MenuCall()
         {
             bool exitProgram = false;
             while (exitProgram == false)
             {
-                taskChoice();
-                Console.WriteLine("\nВыйти?\n1-Да, 2-Нет, продолжить");
-                int userChoice = Convert.ToInt32(Console.ReadLine());
-                if (userChoice == 1)
-                {
-                    exitProgram = true;
-                }
-                else
-                {
-                    while (userChoice != 1 && userChoice != 2)
-                    {
-                        Console.WriteLine("\nВведите 1(Выйти) или 2(Продолжить)");
-                        userChoice = Convert.ToInt32(Console.ReadLine());
-                    }
-                    if (userChoice == 1)
-                    {
-                        exitProgram = true;
-                    }
-                    else
-                    {
-                        exitProgram = false;
-                    }
-                }
+                TaskChoice();
+                exitProgram = ExitLogic();
             }
         }
 
-        static void taskChoice()
+        static void TaskChoice()
         {
             int taskNumber;
             do
             {
                 Console.WriteLine("Выберите задачу, которую хотите решить:\n1-Задача 1 (Длина отрезка)\n2-Задача 2 (Сумма дней)\n");
                 taskNumber = Convert.ToInt32(Console.ReadLine());
-                Switcher(taskNumber);
+                SelectTask(taskNumber);
             }
             while (taskNumber != 1 && taskNumber != 2);
+        }
+
+        static bool ExitLogic()
+        {
+            Console.WriteLine("\nВыйти?\n1-Да, 2-Нет, продолжить");
+            int userChoice = Convert.ToInt32(Console.ReadLine());
+            if (userChoice != 1 && userChoice != 2)
+            {
+                Console.WriteLine("\nДалбаёб, па руски же написано 1 или 2");
+            }
+            return userChoice == 1;
         }
     }
 }
