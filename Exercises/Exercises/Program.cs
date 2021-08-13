@@ -35,8 +35,9 @@ namespace Exercises
             Console.WriteLine($"Величина в днях {valueInDays}");
         }
 
-        static void SelectTask(int taskNumber)
+        static bool SelectTask(int taskNumber)
         {
+            bool correctNumber = true;
             switch (taskNumber)
             {
                 case 1:
@@ -48,9 +49,11 @@ namespace Exercises
                 default:
                     {
                         Console.WriteLine("\nНеправильное число\n");
+                        correctNumber = false;
                         break;
                     }
             }
+            return correctNumber;
         }
 
         static void MenuCall()
@@ -66,13 +69,14 @@ namespace Exercises
         static void TaskChoice()
         {
             int taskNumber;
+            bool correctNumber;
             do
             {
                 Console.WriteLine("Выберите задачу, которую хотите решить:\n1-Задача 1 (Длина отрезка)\n2-Задача 2 (Сумма дней)\n");
                 taskNumber = Convert.ToInt32(Console.ReadLine());
-                SelectTask(taskNumber);
+                correctNumber = SelectTask(taskNumber);
             }
-            while (taskNumber != 1 && taskNumber != 2);
+            while (correctNumber == false);
         }
 
         static bool ExitLogic()
@@ -81,7 +85,8 @@ namespace Exercises
             int userChoice = Convert.ToInt32(Console.ReadLine());
             if (userChoice != 1 && userChoice != 2)
             {
-                Console.WriteLine("\nДалбаёб, па руски же написано 1 или 2");
+                Console.WriteLine("\nНеправильный ввод");
+                return ExitLogic();
             }
             return userChoice == 1;
         }
